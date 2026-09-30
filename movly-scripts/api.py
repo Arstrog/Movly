@@ -1,7 +1,7 @@
 import os
 import sys
 import requests
-from .conf import BASE_URL, HEADERS
+import conf
 
 
 def fetch_movie_data(type):
@@ -15,12 +15,12 @@ def fetch_movie_data(type):
         raise ValueError(f"Unknown Category: {type}")
     choice = types.get(type)
 
-    url = f"{BASE_URL}{choice}"
+    url = f"{conf.BASE_URL}{choice}"
 
     query_param ={"language":"en-US","page":1}
 
     try:
-        api_response = requests.get(url,headers=HEADERS,params=query_param)
+        api_response = requests.get(url,headers=conf.HEADERS,params=query_param)
         api_response.raise_for_status()
         data = api_response.json()
         return data.get("results",[])
