@@ -1,6 +1,6 @@
 import argparse
 import sys
-import api
+import movly_scripts.api as api
 
 CATEGORY_TYPES=[
     "playing",
@@ -11,22 +11,22 @@ CATEGORY_TYPES=[
 def process_now(movies:list):
 
     sorted_movies = sorted(movies,key=lambda x:x.get("release_date",""),reverse=True )
-    return [f"Title:{m["title"]} --- RealeaseDate: {m["release_date"]}" for m in sorted_movies]
+    return [f"~Title:{m["title"]} \n RealeaseDate: {m["release_date"]} \n" for m in sorted_movies]
 
 def process_pop(movies:list):
 
     sorted_movies = sorted(movies,key=lambda x:x.get("popularity",""),reverse=True )
-    return [f"Title:{m["title"]} --- PopularityScore: {m["popularity"]}" for m in sorted_movies]
+    return [f"~Title:{m["title"]} \n PopularityScore: {m["popularity"]} \n" for m in sorted_movies]
 
 def process_top(movies:list):
 
     sorted_movies = sorted(movies,key=lambda x:x.get("vote_average",""),reverse=True )
-    return [f"Title:{m["title"]} --- VoteAverage: {m["vote_average"]} --- VoteCount: {m["vote_count"]}" for m in sorted_movies]
+    return [f"~Title:{m["title"]} \n VoteAverage: {m["vote_average"]} \n VoteCount: {m["vote_count"]} \n" for m in sorted_movies]
 
 def process_upcoming(movies:list):
 
     sorted_movies = sorted(movies,key=lambda x:x.get("release_date",""),reverse=True )
-    return [f"Title:{m["title"]} --- RealeaseDate: {m["release_date"]}" for m in sorted_movies]
+    return [f"~Title:{m["title"]} \n RealeaseDate: {m["release_date"]} \n" for m in sorted_movies]
 
 def display_data(args,data:list):
     cat =  str(args.type) if args.type is not None else sys.exit("Argument was expected.")
@@ -47,9 +47,6 @@ def display_data(args,data:list):
 
     for m in res:
         print(m)
-
-
-
 
 
 def parser()-> argparse.ArgumentParser:

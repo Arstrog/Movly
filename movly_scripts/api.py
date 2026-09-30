@@ -1,7 +1,7 @@
 import os
 import sys
 import requests
-import conf
+import movly_scripts.conf as conf
 
 
 def fetch_movie_data(type):
