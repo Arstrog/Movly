@@ -1,4 +1,4 @@
 venv/
 .env
-movly-scripts/__pycache__
+movly_scripts/__pycache__
 movly.egg-info
